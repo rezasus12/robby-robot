@@ -1,0 +1,129 @@
+#include <stdio.h>
+
+int y, x, pts;
+
+void menu();
+void origin();
+void location();
+void move();
+void points(int choice);
+
+int main() {
+    menu();
+    return 0;
+}
+
+void menu() {
+    int choice;
+    do {
+        printf("\nRobby Robot MENU\n");
+        printf("[1] Origin\n");
+        printf("[2] Location\n");
+        printf("[3] Move\n");
+        printf("[0] Exit\n");
+        printf("Input Choice: ");
+        scanf("%d", &choice);
+        switch (choice) {
+            case 1:
+                printf("Robby returns to origin\n");
+                origin();
+                break;
+            case 2:
+                location();
+                break;
+            case 3:
+                move();
+                break;
+            case 0:
+                printf("Program Terminated, Goodbye :(\n");
+                break;
+            default:
+                printf("Invalid choice!!! Please Try Again :(\n");
+        }
+        if (choice != 0) {
+            printf("Press any key to continue....");
+            getch();
+            system("cls");
+        }
+    } while (choice != 0);
+}
+
+void origin() {
+    x = 0;
+    y = 0;
+}
+
+void location() {
+    int choice;
+    printf("Robby's current location is: (%d, %d)\n", x, y);
+    printf("\t[1] East\n");
+    printf("\t[2] West\n");
+    printf("\t[3] North\n");
+    printf("\t[4] South\n");
+    printf("\t[0] Back\n");
+    printf("Input choice:");
+    scanf("%d", &choice);
+    switch(choice) {
+        case 1:
+            printf("Robby's location goes to the East\n");
+            points(choice);
+            break;
+        case 2:
+            printf("Robby's location goes to the West\n");
+            points(choice);
+            break;
+        case 3:
+            printf("Robby's location goes to the North\n");
+            points(choice);
+            break;
+        case 4:
+            printf("Robby's location goes to the South\n");
+            points(choice);
+            break;
+        default:
+            printf("Invalid location!! Please try again :(\n");
+    }
+}
+
+void move() {
+    int choice;
+    printf("\nWhich direction do you want Robby to move?\n");
+    printf("\t[1] East\n");
+    printf("\t[2] West\n");
+    printf("\t[3] North\n");
+    printf("\t[4] South\n");
+    printf("\t[0] Back\n");
+    printf("Input choice: ");
+    scanf("%d", &choice);
+    switch (choice) {
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+            points(choice);
+            break;
+        case 0:
+            break;
+        default:
+            printf("Invalid direction!!! Please try again :(\n");
+    }
+}
+
+void points(int choice) {
+    printf("How many points do you want Robby to move? ");
+    scanf("%d", &pts);
+    switch (choice) {
+        case 1:
+            printf("Robby moved %d points to the East\n", pts);
+            x += pts;
+            break;
+        case 2:
+            printf("Robby moved %d points to the West\n", pts);
+            x -= pts;
+            break;
+        case 3:
+            printf("Robby moved %d points to the North\n", pts);
+            y += pts;
+            break;
+}
+    }
